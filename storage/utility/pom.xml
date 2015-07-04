@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ilyagubarev.samples.springfour</groupId>
+        <artifactId>springfour-storage</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.ilyagubarev.samples.springfour</groupId>
+    <artifactId>springfour-storage-utility</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Spring Four Sample : Storage : Utility</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.modules.common.utility>1.0.0-SNAPSHOT</versions.modules.common.utility>
+        <versions.modules.storage.api>1.0.0-SNAPSHOT</versions.modules.storage.api>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ilyagubarev.samples.springfour</groupId>
+            <artifactId>springfour-common-utility</artifactId>
+            <version>${versions.modules.common.utility}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ilyagubarev.samples.springfour</groupId>
+            <artifactId>springfour-storage-api</artifactId>
+            <version>${versions.modules.storage.api}</version>
+        </dependency>
+    </dependencies>
+</project>

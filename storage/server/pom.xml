@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ilyagubarev.samples.springfour</groupId>
+        <artifactId>springfour-storage</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.ilyagubarev.samples.springfour</groupId>
+    <artifactId>springfour-storage-server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>Spring Four Sample : Storage : Server</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.modules.common.server.persistence>1.0.0-SNAPSHOT</versions.modules.common.server.persistence>
+        <versions.modules.common.server.view>1.0.0-SNAPSHOT</versions.modules.common.server.view>
+        <versions.modules.storage.utility>1.0.0-SNAPSHOT</versions.modules.storage.utility>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ilyagubarev.samples.springfour</groupId>
+            <artifactId>springfour-common-server-persistence</artifactId>
+            <version>${versions.modules.common.server.persistence}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ilyagubarev.samples.springfour</groupId>
+            <artifactId>springfour-common-server-view</artifactId>
+            <version>${versions.modules.common.server.view}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ilyagubarev.samples.springfour</groupId>
+            <artifactId>springfour-storage-utility</artifactId>
+            <version>${versions.modules.storage.utility}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>springfour</warName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
