@@ -7,8 +7,6 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LogAspectBean {
 
-    // execution()
-
     @Pointcut("within(com.ilyagubarev.samples.springfour.storage.server.context.controllers..*)")
     public void inControllers() {
 
@@ -20,7 +18,7 @@ public class LogAspectBean {
     }
 
     @After("apiMethod() && inControllers()")
-    public void afterBeanInitialization() {
-        System.out.format("Bean was created!!!!!!!!!!!!!!!!");
+    public void afterRestApiExecution() {
+        System.out.format("api method executed in REST controllers");
     }
 }
