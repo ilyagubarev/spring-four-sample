@@ -1,12 +1,23 @@
 package com.ilyagubarev.samples.springfour.storage.server.repositories;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "bags")
 public class Bag implements Serializable {
 
+    private Integer id;
+    private String title;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -15,16 +26,12 @@ public class Bag implements Serializable {
         this.id = id;
     }
 
-    @Id
-    private Integer id;
-
-    private String value;
-
-    public String getValue() {
-        return value;
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

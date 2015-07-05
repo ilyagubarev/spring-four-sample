@@ -1,16 +1,11 @@
 package com.ilyagubarev.samples.springfour.storage.server;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-
-import com.ilyagubarev.samples.springfour.storage.server.context.LogAspectBean;
-import com.ilyagubarev.samples.springfour.storage.server.repositories.BagRepository;
-import com.ilyagubarev.samples.springfour.storage.server.context.repositories.BagRepositoryBean;
-import com.ilyagubarev.samples.springfour.storage.server.repositories.Bag;
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -21,6 +16,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+import com.ilyagubarev.samples.springfour.storage.server.context.LogAspectBean;
+import com.ilyagubarev.samples.springfour.storage.server.repositories.Bag;
 
 @Configuration
 @EnableAspectJAutoProxy
@@ -34,7 +32,10 @@ public abstract class ApplicationConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.DERBY).build();
+        return new EmbeddedDatabaseBuilder()
+                .setType(EmbeddedDatabaseType.DERBY)
+                .addScript("classpath:schema-initialization.sql")
+                .build();
     }
 
     @Bean
