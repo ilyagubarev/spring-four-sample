@@ -17,7 +17,9 @@
     <properties>
         <project.build.jdk>1.8</project.build.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <versions.libs.jackson>2.6.0-rc3</versions.libs.jackson>
         <versions.libs.java.ee>7.0</versions.libs.java.ee>
+        <versions.libs.slf4j>1.7.12</versions.libs.slf4j>
         <versions.libs.spring>4.1.6.RELEASE</versions.libs.spring>
         <versions.plugins.compiler>3.3</versions.plugins.compiler>
         <versions.plugins.war>2.6</versions.plugins.war>
@@ -37,6 +39,36 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${versions.libs.jackson}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${versions.libs.jackson}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${versions.libs.jackson}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${versions.libs.slf4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${versions.libs.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${versions.libs.spring}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
                 <version>${versions.libs.spring}</version>
@@ -50,6 +82,22 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
                 <version>${versions.libs.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${versions.libs.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${versions.libs.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${versions.libs.spring}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
