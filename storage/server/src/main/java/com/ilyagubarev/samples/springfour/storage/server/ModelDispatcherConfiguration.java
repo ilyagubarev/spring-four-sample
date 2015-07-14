@@ -15,8 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.ilyagubarev.samples.springfour.storage.server.context.controllers.BagControllerBean;
+import com.ilyagubarev.samples.springfour.storage.server.context.controllers.ItemControllerBean;
 import com.ilyagubarev.samples.springfour.storage.server.repositories.BagRepository;
 import com.ilyagubarev.samples.springfour.storage.server.repositories.auto.AutoBagRepository;
+import com.ilyagubarev.samples.springfour.storage.server.repositories.auto.AutoItemRepository;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.MediaType;
 
@@ -28,6 +30,11 @@ public abstract class ModelDispatcherConfiguration extends WebMvcConfigurerAdapt
     @Bean
     public BagControllerBean bagController(AutoBagRepository bags) {
         return new BagControllerBean(bags);
+    }
+
+    @Bean
+    public ItemControllerBean itemController(AutoItemRepository items) {
+        return new ItemControllerBean(items);
     }
 
     @Override

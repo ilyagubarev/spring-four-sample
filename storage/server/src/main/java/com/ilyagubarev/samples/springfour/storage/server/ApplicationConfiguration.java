@@ -19,6 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import com.ilyagubarev.samples.springfour.storage.server.context.LogAspectBean;
 import com.ilyagubarev.samples.springfour.storage.server.repositories.Bag;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 @EnableAspectJAutoProxy
@@ -31,11 +32,24 @@ public abstract class ApplicationConfiguration {
     }
 
     @Bean
-    public DataSource dataSource() {
+    @Profile({"dev-alpha", "dev-beta"})
+    public EmbeddedDatabaseBuilder developmentDataSourceBuilder() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.DERBY)
-                .addScript("classpath:schema-initialization.sql")
-                .build();
+                .addScript("classpath:dev-schema-initialization.sql")
+                .addScript("classpath:dev-schema-population.sql");
+    }
+
+    @Bean
+    @Profile({"dev-alpha"})
+    public DataSource alphaDataSource(EmbeddedDatabaseBuilder builder) {
+        return builder.build();
+    }
+
+    @Bean
+    @Profile({"dev-beta"})
+    public DataSource betaDataSource(EmbeddedDatabaseBuilder builder) {
+        return builder.build();
     }
 
     @Bean
